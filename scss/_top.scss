@@ -333,3 +333,70 @@ main {
   }
 
 }
+
+
+// バックナンバー
+.backnumbers {
+
+  &__heading {
+    background-color: #f8f8f8;
+    font-weight: 400;
+    text-transform: uppercase;
+    font-size: .9rem;
+    padding: 2rem;
+
+    &::first-line {
+      font-size: 1.2rem;
+    }
+  }
+
+  &__list {
+    list-style: none;
+
+    a {
+      display: block;
+      padding: 3rem 1.5rem;
+      text-decoration: none;
+      color: var(--color-primary);
+      transition: opacity .3s;
+
+      &:hover {
+        opacity: .7;
+      }
+    }
+  }
+
+  &__cover {
+    width: 65%;
+    max-width: 350px;
+    display: block;
+    margin: 0 auto 3rem;
+    box-shadow:
+      2px 2px 5px 0 rgba(0 0 0 /.2),
+      0 0 20px 0 rgba(0 0 0 / .2);
+  }
+
+  &__date,
+  &__number {
+    font-weight: 300;
+    margin-bottom: .5rem;
+  }
+
+  &__title {
+    font-size: 1.4rem;
+  }
+
+  @include mq {
+    &__heading {
+      &::first-line {
+        font-size: 1.8rem;
+      }
+    }
+
+    &__list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+}
