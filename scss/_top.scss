@@ -221,3 +221,111 @@ body {
     }
   }
 }
+
+// メイン
+main {
+  @include mq {
+    margin-left: 200px;
+  }
+}
+
+// メインビジュアル
+.mv {
+  height: calc(100vh - 60px);
+  background: url(../img/mv-bg@2x.jpg) no-repeat center center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  opacity: 0;
+  filter: brightness(2) blur(5px);
+  transition: opacity 1s, filter 1.5s;
+
+  body.loaded & {
+    opacity: 1;
+    filter: brightness(1) blur(0px);
+  }
+
+  &__new-issue {
+    // width: 80%;
+    // max-width: 500px;
+    width: min(80%, 500px);
+  }
+
+  &__title {
+    position: absolute;
+    bottom: 50px;
+    left: 20px;
+
+    h2 {
+      display: grid;
+      grid-template-rows: repeat(3, auto);
+      grid-gap: 10px;
+
+    }
+
+    h2>* {
+      background-color: #fff;
+      justify-self: start;
+    }
+  }
+
+  &__title-date-number,
+  &__title-en,
+  &__title-ja {
+    clip-path: inset(0 100% 0 0);
+    transition: clip-path 1s 1.8s var(--easing);
+  }
+
+  body.loaded &__title-date-number,
+  body.loaded &__title-en,
+  body.loaded &__title-ja {
+    clip-path: inset(0 0 0 0);
+  }
+
+  &__title-date-number,
+  &__title-en,
+  &__title-ja {
+    >span {
+      transform: translateY(10px);
+    }
+  }
+
+  // 発行日＋No.
+  &__title-date-number {
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+
+  &__title-en,
+  &__title-ja {
+    font-size: 2rem;
+    font-weight: 400;
+    font-feature-settings: "palt" 1;
+  }
+
+  &__title-ja {
+    letter-spacing: 0.04em;
+  }
+
+  @include mq {
+    height: 100vh;
+
+    &__new-issue {
+      width: auto;
+      height: 85vh;
+    }
+
+    &__title-date-number {
+      font-size: 1.3rem;
+    }
+
+    &__title-en,
+    &__title-ja {
+      // font-size: 3rem;
+      font-size: clamp(2.5rem, 4vw, 3.4rem);
+    }
+  }
+
+}
