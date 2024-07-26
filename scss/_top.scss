@@ -276,21 +276,25 @@ main {
   &__title-ja {
     clip-path: inset(0 100% 0 0);
     transition: clip-path 1s 1.8s var(--easing);
+    overflow: hidden;
+
+    >span {
+      display: block;
+      transform: translateY(100%);
+      transition: transform 1s 3s var(--easing);
+    }
   }
 
   body.loaded &__title-date-number,
   body.loaded &__title-en,
   body.loaded &__title-ja {
     clip-path: inset(0 0 0 0);
-  }
 
-  &__title-date-number,
-  &__title-en,
-  &__title-ja {
     >span {
-      transform: translateY(10px);
+      transform: translateY(0);
     }
   }
+
 
   // 発行日＋No.
   &__title-date-number {
